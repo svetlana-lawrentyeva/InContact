@@ -4,6 +4,8 @@ import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 import com.skillsup.model.Place;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Set;
@@ -16,6 +18,8 @@ import java.util.Set;
  * To change this template use File | Settings | File Templates.
  */
 
+@Entity
+@Table(name="contact")
 public class ContactImpl implements Contact, Serializable{
 
     private int id;
