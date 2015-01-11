@@ -8,14 +8,13 @@ import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 import com.skillsup.model.Message;
 import com.skillsup.model.Place;
+import com.skillsup.model.impl.ContactImpl;
+import com.skillsup.model.impl.HobbyImpl;
+import com.skillsup.model.impl.PlaceImpl;
 import com.skillsup.service.JavaContactService;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,8 +33,8 @@ public class JavaContactServiceImpl implements JavaContactService {
     private static int idPlaceCounter=0;
 
     public void createContact(String firstName, String lastName, LocalDate birthDate){
-        @Autowired
-        Contact contact;
+
+        Contact contact = new ContactImpl();
         contact.setId(idContactCounter++);
         contact.setFirstName(firstName);
         contact.setLastName(lastName);
@@ -44,8 +43,8 @@ public class JavaContactServiceImpl implements JavaContactService {
     }
 
     public void addHobby(String title, String description){
-        @Autowired
-        Hobby hobby;
+
+        Hobby hobby = new HobbyImpl();
         hobby.setId(idHobbyCounter++);
         hobby.setTitle(title);
         hobby.setDescription(description);
@@ -53,8 +52,8 @@ public class JavaContactServiceImpl implements JavaContactService {
     }
 
     public void addPlace(String title, String description, double longitude, double latitude){
-        @Autowired
-        Place place;
+
+        Place place = new PlaceImpl();
         place.setId(idPlaceCounter++);
         place.setTitle(title);
         place.setDescription(description);
@@ -66,7 +65,7 @@ public class JavaContactServiceImpl implements JavaContactService {
         contactDao.addFrendhip(contact1,contact2);
     }
 
-    public Set<Contact> getFriendList(Contact contact){
+    public List<Contact> getFriendList(Contact contact){
        return contactDao.getFriendsList(contact);
     }
 

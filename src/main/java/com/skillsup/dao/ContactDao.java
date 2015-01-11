@@ -4,7 +4,7 @@ import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 import com.skillsup.model.Place;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -24,7 +24,7 @@ public interface ContactDao {
 
     void addHobby(Contact contact, Hobby hobby);
 
-    Set<Contact> getFriendsList(Contact contact);
+    List<Contact> getFriendsList(Contact contact);
 
     void addPlace(Contact contact, Place place);
 }

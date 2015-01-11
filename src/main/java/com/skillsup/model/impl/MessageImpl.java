@@ -3,6 +3,7 @@ package com.skillsup.model.impl;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Message;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
@@ -12,12 +13,30 @@ import java.time.LocalDateTime;
  * Time: 4:58 PM
  * To change this template use File | Settings | File Templates.
  */
+
+@Entity
+@Table(name="messages")
 public class MessageImpl implements Message {
+    @Id
+    @Column(name="id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "date_")
     private LocalDateTime date;
+
+    @ManyToOne(targetEntity = ContactImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL  )
+    @JoinColumn(name = "messagesFrom")
     private Contact from;
+
+    @ManyToOne(targetEntity = ContactImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "messagesTo")
     private Contact to;
+
+    @Column(name = "content")
     private String content;
+
+    //========================================================================================
 
     public LocalDateTime getDate() {
         return date;

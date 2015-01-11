@@ -9,7 +9,6 @@ import com.skillsup.model.Message;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -27,7 +26,7 @@ public interface JavaContactService {
 
     void addFrendship(Contact contact1, Contact contact2);
 
-    Set<Contact> getFriendList(Contact contact);
+    List<Contact> getFriendList(Contact contact);
 
     List<Message> getConversation(Contact contact1, Contact contact2);
 

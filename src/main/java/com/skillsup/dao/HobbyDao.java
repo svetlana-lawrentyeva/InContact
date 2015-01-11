@@ -3,7 +3,7 @@ package com.skillsup.dao;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,5 +15,5 @@ import java.util.Set;
 public interface HobbyDao {
     void addHobby(Hobby hobby);
 
-    Set<Contact> getAllContactsWithHobby(Hobby hobby);
+    List<Contact> getAllContactsWithHobby(Hobby hobby);
 }

@@ -3,7 +3,7 @@ package com.skillsup.dao;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Place;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,5 +15,5 @@ import java.util.Set;
 public interface PlaceDao {
     void addPlace(Place place);
 
-    Set<Contact> getAllContactsForPlace(Place place);
+    List<Contact> getAllContactsForPlace(Place place);
 }

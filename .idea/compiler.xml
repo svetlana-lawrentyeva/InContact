@@ -27,6 +27,9 @@
         <module name="InContact" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="InContact" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

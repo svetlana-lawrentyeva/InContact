@@ -4,8 +4,13 @@ import com.skillsup.dao.ContactDao;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 import com.skillsup.model.Place;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -14,34 +19,48 @@ import java.util.Set;
  * Time: 5:03 PM
  * To change this template use File | Settings | File Templates.
  */
+
+@Repository
 public class ContactDaoImpl implements ContactDao {
 
+    @Autowired
+    SessionFactory sessionFactory;
 
+    @Transactional(readOnly = false)
     public void addContact(Contact contact) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sessionFactory.getCurrentSession().save(contact);
     }
 
     public void deleteContact(Contact contact) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sessionFactory.getCurrentSession().delete(contact);
     }
 
+    @Transactional(readOnly = false)
     public void addFrendhip(Contact contact1, Contact contact2) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        //contact1.getFriends().add(contact2);
+        //contact2.
     }
 
     public void removeFrendship(Contact contact1, Contact contact2) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
+    @Transactional(readOnly = false)
     public void addHobby(Contact contact, Hobby hobby) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        contact.getHobbies().add(hobby);
+        sessionFactory.getCurrentSession().update(contact);
     }
 
-    public Set<Contact> getFriendsList(Contact contact) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    @Transactional(readOnly = true)
+    public List<Contact> getFriendsList(Contact contact) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from ContactImpl contact join contact.friends friends where contact.id = :contact_id");
+        query.setParameter("contact_id", contact.getId());
+        return query.list();
     }
 
+    @Transactional(readOnly = false)
     public void addPlace(Contact contact, Place place) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        contact.getPlaces().add(place);
+        sessionFactory.getCurrentSession().update(contact);
     }
 }

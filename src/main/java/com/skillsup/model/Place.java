@@ -1,5 +1,7 @@
 package com.skillsup.model;
 
+import java.util.Set;
+
 /**
  * Created with IntelliJ IDEA.
  * User: nau
@@ -27,4 +29,9 @@ public interface Place {
     public int getId();
 
     public void setId(int id);
+
+
+    public Set<Contact> getContacts();
+
+    public void setContacts(Set<Contact> contacts);
 }

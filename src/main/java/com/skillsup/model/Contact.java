@@ -38,4 +38,12 @@ public interface Contact {
     public Set<Contact> getFriends();
 
     public void setFriends(Set<Contact> friends);
+
+    public Set<Contact> getContacts();
+
+    public void setContacts(Set<Contact> contacts);
+
+    public Set<Message> getMessagesTo() ;
+
+    public void setMessagesTo(Set<Message> messagesTo);
 }

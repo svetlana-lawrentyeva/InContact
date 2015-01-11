@@ -1,6 +1,10 @@
 package com.skillsup.model.impl;
 
+import com.skillsup.model.Contact;
 import com.skillsup.model.Place;
+
+import javax.persistence.*;
+import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -9,12 +13,32 @@ import com.skillsup.model.Place;
  * Time: 4:36 PM
  * To change this template use File | Settings | File Templates.
  */
+
+@Entity
+@Table(name = "places")
 public class PlaceImpl implements Place {
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Column(name = "title")
     private String title;
+
+    @Column(name = "longitude")
     private double longitude;
+
+    @Column(name = "latitude")
     private double latitude;
+
+    @Column(name = "description")
     private String description;
+
+    @ManyToMany(mappedBy = "contacts", targetEntity = ContactImpl.class)
+    private Set<Contact> contacts;
+
+    //======================================================================
 
     public String getTitle() {
         return title;
@@ -54,5 +78,13 @@ public class PlaceImpl implements Place {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
     }
 }

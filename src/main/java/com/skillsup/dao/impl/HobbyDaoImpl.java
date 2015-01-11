@@ -3,8 +3,13 @@ package com.skillsup.dao.impl;
 import com.skillsup.dao.HobbyDao;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Set;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -13,14 +18,23 @@ import java.util.Set;
  * Time: 5:07 PM
  * To change this template use File | Settings | File Templates.
  */
+
+
+@Repository
 public class HobbyDaoImpl implements HobbyDao {
 
+    @Autowired
+    SessionFactory sessionFactory;
 
+    @Transactional(readOnly = false)
     public void addHobby(Hobby hobby) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        sessionFactory.getCurrentSession().save(hobby);
     }
 
-    public Set<Contact> getAllContactsWithHobby(Hobby hobby) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    @Transactional(readOnly = true)
+    public List<Contact> getAllContactsWithHobby(Hobby hobby) {
+        Query query = sessionFactory.getCurrentSession().createQuery("from Contact contact join contact.hobbies hobby where hobby.id = :hobby_id");
+        query.setParameter("hobby_id", hobby.getId());
+        return query.list();
     }
 }

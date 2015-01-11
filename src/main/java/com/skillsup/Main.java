@@ -2,8 +2,8 @@ package com.skillsup;
 
 import com.skillsup.dao.ContactDao;
 import com.skillsup.dao.HobbyDao;
-import com.skillsup.dao.impl_txt.ContactDaoImpl;
-import com.skillsup.dao.impl_txt.HobbyDaoImpl;
+import com.skillsup.dao.impl.ContactDaoImpl;
+import com.skillsup.dao.impl.HobbyDaoImpl;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
 import com.skillsup.model.impl.ContactImpl;
