@@ -28,7 +28,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="InContact" target="1.6" />
+      <module name="InContact" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

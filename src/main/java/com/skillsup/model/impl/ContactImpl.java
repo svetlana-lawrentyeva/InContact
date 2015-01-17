@@ -59,8 +59,11 @@ public class ContactImpl implements Contact, Serializable{
     private Set<Contact>friends;
 
 
-    @ManyToMany(mappedBy = "friends", targetEntity = ContactImpl.class)
-    private Set<Contact>contacts;
+    @ManyToMany(fetch = FetchType.LAZY, targetEntity = ContactImpl.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+     @JoinTable(name="friends",
+                joinColumns = {@JoinColumn(name="id_friend")},
+                inverseJoinColumns = {@JoinColumn(name = "id_contact")})
+    private Set<Contact>friendOf;
 
     @OneToMany(targetEntity = MessageImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "messages")
@@ -128,12 +131,12 @@ public class ContactImpl implements Contact, Serializable{
         this.friends = friends;
     }
 
-    public Set<Contact> getContacts() {
-        return contacts;
+    public Set<Contact> getFriendOf() {
+        return friendOf;
     }
 
-    public void setContacts(Set<Contact> contacts) {
-        this.contacts = contacts;
+    public void setFriendOf(Set<Contact> friendOf) {
+        this.friendOf = friendOf;
     }
 
     public Set<Message> getMessagesFrom() {

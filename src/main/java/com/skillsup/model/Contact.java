@@ -39,9 +39,9 @@ public interface Contact {
 
     public void setFriends(Set<Contact> friends);
 
-    public Set<Contact> getContacts();
+    public Set<Contact> getFriendOf();
 
-    public void setContacts(Set<Contact> contacts);
+    public void setFriendOf(Set<Contact> friendOf);
 
     public Set<Message> getMessagesTo() ;
 

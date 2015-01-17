@@ -7,6 +7,7 @@ import com.skillsup.model.Place;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +25,7 @@ import java.util.List;
 public class ContactDaoImpl implements ContactDao {
 
     @Autowired
+    @Qualifier("sessionFactory")
     SessionFactory sessionFactory;
 
     @Transactional(readOnly = false)
@@ -37,12 +39,21 @@ public class ContactDaoImpl implements ContactDao {
 
     @Transactional(readOnly = false)
     public void addFrendhip(Contact contact1, Contact contact2) {
-        //contact1.getFriends().add(contact2);
-        //contact2.
+        contact1.getFriends().add(contact2);
+        contact1.getFriendOf().add(contact2);
+        contact2.getFriends().add(contact1);
+        contact2.getFriendOf().add(contact1);
+        sessionFactory.getCurrentSession().update(contact1);
+        sessionFactory.getCurrentSession().update(contact2);
     }
 
     public void removeFrendship(Contact contact1, Contact contact2) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        contact1.getFriends().remove(contact2);
+        contact1.getFriendOf().remove(contact2);
+        contact2.getFriends().remove(contact1);
+        contact2.getFriendOf().remove(contact1);
+        sessionFactory.getCurrentSession().update(contact1);
+        sessionFactory.getCurrentSession().update(contact2);
     }
 
     @Transactional(readOnly = false)
