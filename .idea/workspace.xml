@@ -4,19 +4,11 @@
     <list id="dba69792-608c-473b-bcfe-93b15e3a486d" name="New changelist1" comment="" />
     <list id="037d8f36-0471-4edf-b754-732aa4d6fc46" name="New changelist" comment="" />
     <list default="true" id="a55822c9-64fa-4a7b-aedf-209cc9f5541f" name="5" comment="5">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/model/Contact.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/model/Contact.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/ContactDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/ContactDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/model/impl/ContactImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/model/impl/ContactImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/HobbyDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/HobbyDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/MessageDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/MessageDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/PlaceDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/com/skillsup/dao/impl/PlaceDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" afterPath="$PROJECT_DIR$/src/main/resources/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="InContact.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/Dummy.txt" changelist="a55822c9-64fa-4a7b-aedf-209cc9f5541f" time="1421488327623" ignored="false" />
+    <file path="/Dummy.txt" changelist="a55822c9-64fa-4a7b-aedf-209cc9f5541f" time="1421490691309" ignored="false" />
     <file path="/ContactImpl.java" changelist="a55822c9-64fa-4a7b-aedf-209cc9f5541f" time="1421488915992" ignored="false" />
     <file path="/ContactDaoImpl.java" changelist="a55822c9-64fa-4a7b-aedf-209cc9f5541f" time="1421489875625" ignored="false" />
     <file path="/applicationContext.xml" changelist="a55822c9-64fa-4a7b-aedf-209cc9f5541f" time="1421490246662" ignored="false" />
@@ -920,14 +912,18 @@
       <created>1419285924830</created>
       <updated>1419285924831</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="5">
+      <created>1421490714120</created>
+      <updated>1421490714120</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
     <option name="totallyTimeSpent" value="1822000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-10" y="19" width="1460" height="891" extended-state="6" />
+    <frame x="-10" y="19" width="1460" height="891" extended-state="7" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.38088644" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1011,7 +1007,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="New changelist1" />
+    <option name="LAST_COMMIT_MESSAGE" value="5" />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="true" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -1027,6 +1023,7 @@
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.6" />
     <MESSAGE value="init" />
     <MESSAGE value="New changelist1" />
+    <MESSAGE value="5" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
