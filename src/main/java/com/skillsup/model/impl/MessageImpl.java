@@ -25,11 +25,11 @@ public class MessageImpl implements Message {
     @Column(name = "date_")
     private LocalDateTime date;
 
-    @ManyToOne(targetEntity = ContactImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL  )
+    @ManyToOne(targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "messagesFrom")
     private Contact from;
 
-    @ManyToOne(targetEntity = ContactImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     @JoinColumn(name = "messagesTo")
     private Contact to;
 

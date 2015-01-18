@@ -25,7 +25,7 @@ import java.util.List;
 public class HobbyDaoImpl implements HobbyDao {
 
     @Autowired
-    @Qualifier("sessionFactory")
+    private
     SessionFactory sessionFactory;
 
     @Transactional(readOnly = false)
@@ -38,5 +38,13 @@ public class HobbyDaoImpl implements HobbyDao {
         Query query = sessionFactory.getCurrentSession().createQuery("from Contact contact join contact.hobbies hobby where hobby.id = :hobby_id");
         query.setParameter("hobby_id", hobby.getId());
         return query.list();
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }

@@ -25,7 +25,7 @@ import java.util.List;
 public class MessageDaoImpl implements MessageDao {
 
     @Autowired
-    @Qualifier("sessionFactory")
+    private
     SessionFactory sessionFactory;
 
     @Transactional(readOnly = false)
@@ -39,5 +39,13 @@ public class MessageDaoImpl implements MessageDao {
         query.setParameter("contact_from_id", contact1.getId());
         query.setParameter("contact_to_id", contact2.getId());
         return query.list();
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }

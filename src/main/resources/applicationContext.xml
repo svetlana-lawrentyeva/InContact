@@ -8,7 +8,7 @@
                  http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
                  http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-    <context:component-scan base-package="com.skillsup.dao.impl">
+    <context:component-scan base-package="com.skillsup">
         <context:exclude-filter type="annotation"
                                 expression="org.springframework.stereotype.Controller"/>
     </context:component-scan>
@@ -29,10 +29,10 @@
 
     </bean>
 
-    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+    <bean id="sessionFactory" name="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
         <property name="dataSource" ref="dataSource"/>
 
-        <property name="packagesToScan" value="com.skillsup.dao"/>
+        <property name="packagesToScan" value="com.skillsup"/>
 
         <property name="hibernateProperties">
             <props>
@@ -42,6 +42,29 @@
                 <prop key="current_session_context_class">thread</prop>
             </props>
         </property>
+    </bean>
+
+    <bean id="contactDao" class="com.skillsup.dao.impl.ContactDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+
+    <bean id="hobbyDao" class="com.skillsup.dao.impl.HobbyDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="messageDao" class="com.skillsup.dao.impl.MessageDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="placeDao" class="com.skillsup.dao.impl.PlaceDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <bean id="javaContactService" class="com.skillsup.service.impl.JavaContactServiceImpl">
+        <property name="contactDao" ref="contactDao" />
+        <property name="hobbyDao" ref="hobbyDao" />
+        <property name="messageDao" ref="messageDao" />
+        <property name="placeDao" ref="placeDao" />
     </bean>
 
     <!--<context:property-placeholder location="classpath:persistance-mysql.properties" />-->

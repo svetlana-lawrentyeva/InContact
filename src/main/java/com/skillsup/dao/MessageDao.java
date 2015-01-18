@@ -2,6 +2,7 @@ package com.skillsup.dao;
 
 import com.skillsup.model.Contact;
 import com.skillsup.model.Message;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface MessageDao {
     void storeMessage(Message message);
 
     List<Message> getConversation(Contact contact1, Contact contact2);
+
+    public SessionFactory getSessionFactory();
+
+    public void setSessionFactory(SessionFactory sessionFactory);
 }

@@ -28,7 +28,7 @@ public class HobbyImpl implements Hobby {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "hobbies", fetch = FetchType.LAZY)
+    @ManyToMany(mappedBy = "hobbies", targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     private Set<Contact>contacts;
 
     //===============================================================================

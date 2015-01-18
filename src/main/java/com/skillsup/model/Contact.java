@@ -1,6 +1,6 @@
 package com.skillsup.model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -19,9 +19,9 @@ public interface Contact {
 
     void setLastName(String lastName);
 
-    LocalDate getBirthDate();
+    Date getBirthDate();
 
-    void setBirthDate(LocalDate birthDate);
+    void setBirthDate(Date birthDate);
 
     Set<Hobby> getHobbies();
 
@@ -46,4 +46,6 @@ public interface Contact {
     public Set<Message> getMessagesTo() ;
 
     public void setMessagesTo(Set<Message> messagesTo);
+
+    public void printContact();
 }

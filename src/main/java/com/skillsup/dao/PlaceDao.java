@@ -2,6 +2,7 @@ package com.skillsup.dao;
 
 import com.skillsup.model.Contact;
 import com.skillsup.model.Place;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface PlaceDao {
     void addPlace(Place place);
 
     List<Contact> getAllContactsForPlace(Place place);
+
+    public SessionFactory getSessionFactory();
+
+    public void setSessionFactory(SessionFactory sessionFactory);
 }

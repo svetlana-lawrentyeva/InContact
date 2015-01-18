@@ -7,7 +7,6 @@ import com.skillsup.dao.PlaceDao;
 import com.skillsup.model.Contact;
 import com.skillsup.model.Message;
 
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -18,7 +17,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 public interface JavaContactService {
-    void createContact(String firstName, String lastName, LocalDate birthDate);
+    void createContact(String firstName, String lastName, int year, int month, int day);
 
     void addHobby(String title, String description);
 
@@ -45,4 +44,8 @@ public interface JavaContactService {
     MessageDao getMessageDao();
 
     void setMessageDao(MessageDao messageDao);
+
+    Contact getContactById(int id);
+
+    void printContact(Contact contact);
 }

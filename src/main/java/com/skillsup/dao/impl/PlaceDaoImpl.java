@@ -6,12 +6,10 @@ import com.skillsup.model.Place;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.Set;
 
 /**
  * Created with IntelliJ IDEA.
@@ -26,7 +24,7 @@ import java.util.Set;
 public class PlaceDaoImpl implements PlaceDao {
 
     @Autowired
-    @Qualifier("sessionFactory")
+    private
     SessionFactory sessionFactory;
 
     @Transactional(readOnly = false)
@@ -39,5 +37,13 @@ public class PlaceDaoImpl implements PlaceDao {
         Query query = sessionFactory.getCurrentSession().createQuery("from Contact contact join contact.places place where place.id = :place_id");
         query.setParameter("place_id", place.getId());
         return query.list();
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
+    }
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 }

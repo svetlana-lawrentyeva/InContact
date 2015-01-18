@@ -7,7 +7,7 @@ import com.skillsup.model.Place;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.Set;
 
 /**
@@ -37,40 +37,39 @@ public class ContactImpl implements Contact, Serializable{
 
 
     @Column(columnDefinition = "DATETIME", name="birth_date")
-    private LocalDate birthDate;
+    private Date birthDate;
 
-
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = HobbyImpl.class)
+    @ManyToMany(targetEntity = com.skillsup.model.impl.HobbyImpl.class, fetch = FetchType.EAGER)
     @JoinTable(name="contact_hobby",
-            joinColumns = {@JoinColumn(name="id_contact")},
-            inverseJoinColumns = {@JoinColumn(name="id_hobby")})
+            joinColumns =
+            @JoinColumn(name="id_contact", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name="id_hobby", referencedColumnName = "id"))
     private Set<Hobby>hobbies;
 
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = Place.class)
+    @ManyToMany(targetEntity = com.skillsup.model.impl.PlaceImpl.class, fetch = FetchType.EAGER)
     @JoinTable(name="contact_place",
-            joinColumns = {@JoinColumn(name="id_contact")},
-            inverseJoinColumns  = {@JoinColumn(name="id_place")})
+            joinColumns =
+            @JoinColumn(name="id_contact", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name="id_place", referencedColumnName = "id"))
     private Set<Place>places;
 
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = ContactImpl.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @ManyToMany(targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     @JoinTable(name="friends",
-            joinColumns = {@JoinColumn(name="id_contact")},
-            inverseJoinColumns = {@JoinColumn(name = "id_friend")})
+            joinColumns =
+            @JoinColumn(name="id_contact", referencedColumnName = "id"),
+            inverseJoinColumns =
+            @JoinColumn(name = "id_friend", referencedColumnName = "id"))
     private Set<Contact>friends;
 
-
-    @ManyToMany(fetch = FetchType.LAZY, targetEntity = ContactImpl.class, cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-     @JoinTable(name="friends",
-                joinColumns = {@JoinColumn(name="id_friend")},
-                inverseJoinColumns = {@JoinColumn(name = "id_contact")})
+    @ManyToMany(mappedBy = "friends", targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     private Set<Contact>friendOf;
 
-    @OneToMany(targetEntity = MessageImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "messages")
+    @OneToMany(targetEntity = MessageImpl.class, cascade = CascadeType.ALL, mappedBy = "from", fetch = FetchType.EAGER)
     private Set<Message>messagesFrom;
 
-    @OneToMany(targetEntity = MessageImpl.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinTable(name = "messages")
+    @OneToMany(targetEntity = MessageImpl.class, cascade = CascadeType.ALL, mappedBy = "to", fetch = FetchType.EAGER)
     private Set<Message>messagesTo;
 
     //========================================================================
@@ -91,11 +90,11 @@ public class ContactImpl implements Contact, Serializable{
         this.lastName = lastName;
     }
 
-    public LocalDate getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(LocalDate birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -153,5 +152,19 @@ public class ContactImpl implements Contact, Serializable{
 
     public void setMessagesTo(Set<Message> messagesTo) {
         this.messagesTo = messagesTo;
+    }
+
+    public void printContact() {
+        System.out.println(this);
+    }
+
+    public String toString(){
+        StringBuilder sb = new StringBuilder();
+        sb.append("id: ").append(this.id).append("\n");
+        sb.append("first name: ").append(this.firstName).append("\n");
+        sb.append("last name: ").append(this.lastName).append("\n");
+        sb.append("birthday: ").append(this.birthDate).append("\n");
+
+        return sb.toString();
     }
 }

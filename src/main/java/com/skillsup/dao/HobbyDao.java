@@ -2,6 +2,7 @@ package com.skillsup.dao;
 
 import com.skillsup.model.Contact;
 import com.skillsup.model.Hobby;
+import org.hibernate.SessionFactory;
 
 import java.util.List;
 
@@ -16,4 +17,8 @@ public interface HobbyDao {
     void addHobby(Hobby hobby);
 
     List<Contact> getAllContactsWithHobby(Hobby hobby);
+
+    public SessionFactory getSessionFactory();
+
+    public void setSessionFactory(SessionFactory sessionFactory);
 }

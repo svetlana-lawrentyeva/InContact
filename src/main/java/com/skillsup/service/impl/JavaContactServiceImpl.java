@@ -12,8 +12,10 @@ import com.skillsup.model.impl.ContactImpl;
 import com.skillsup.model.impl.HobbyImpl;
 import com.skillsup.model.impl.PlaceImpl;
 import com.skillsup.service.JavaContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -23,29 +25,38 @@ import java.util.List;
  * Time: 5:16 PM
  * To change this template use File | Settings | File Templates.
  */
-public class JavaContactServiceImpl implements JavaContactService {
-    private ContactDao contactDao;
-    private HobbyDao hobbyDao;
-    private PlaceDao placeDao;
-    private MessageDao messageDao;
-    private static int idContactCounter=0;
-    private  static int idHobbyCounter=0;
-    private static int idPlaceCounter=0;
 
-    public void createContact(String firstName, String lastName, LocalDate birthDate){
+@Service
+public class JavaContactServiceImpl implements JavaContactService {
+    @Autowired
+    private ContactDao contactDao;
+    @Autowired
+    private HobbyDao hobbyDao;
+    @Autowired
+    private PlaceDao placeDao;
+    @Autowired
+    private MessageDao messageDao;
+
+//    private static int idContactCounter=0;
+//    private  static int idHobbyCounter=0;
+//    private static int idPlaceCounter=0;
+
+    public void createContact(String firstName, String lastName, int year, int month, int day){
 
         Contact contact = new ContactImpl();
-        contact.setId(idContactCounter++);
+//        contact.setId(idContactCounter++);
         contact.setFirstName(firstName);
         contact.setLastName(lastName);
-        contact.setBirthDate(birthDate);
+        Calendar c = Calendar.getInstance();
+        c.set(year, month, day);
+        contact.setBirthDate(c.getTime());
         contactDao.addContact(contact);
     }
 
     public void addHobby(String title, String description){
 
         Hobby hobby = new HobbyImpl();
-        hobby.setId(idHobbyCounter++);
+//        hobby.setId(idHobbyCounter++);
         hobby.setTitle(title);
         hobby.setDescription(description);
         hobbyDao.addHobby(hobby);
@@ -54,7 +65,7 @@ public class JavaContactServiceImpl implements JavaContactService {
     public void addPlace(String title, String description, double longitude, double latitude){
 
         Place place = new PlaceImpl();
-        place.setId(idPlaceCounter++);
+//        place.setId(idPlaceCounter++);
         place.setTitle(title);
         place.setDescription(description);
         place.setLongitude(longitude);
@@ -104,4 +115,14 @@ public class JavaContactServiceImpl implements JavaContactService {
     public void setMessageDao(MessageDao messageDao) {
         this.messageDao = messageDao;
     }
+
+    public Contact getContactById(int id) {
+        return this.contactDao.getContactById(id);
+    }
+
+    public void printContact(Contact contact) {
+        contact.printContact();
+    }
+
+
 }

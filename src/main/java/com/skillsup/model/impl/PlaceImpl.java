@@ -35,7 +35,7 @@ public class PlaceImpl implements Place {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "contacts", targetEntity = ContactImpl.class)
+    @ManyToMany(mappedBy = "places", targetEntity = com.skillsup.model.impl.ContactImpl.class, fetch = FetchType.EAGER)
     private Set<Contact> contacts;
 
     //======================================================================
